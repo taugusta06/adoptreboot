@@ -1,7 +1,6 @@
 import React, { Component } from "react";
+import Search from "../Search";
 import "./Home.css";
-// import Results from '../../components/Results/Results';
-import axios from "axios";
 
 class Home extends Component {
   constructor(props) {
@@ -28,21 +27,20 @@ class Home extends Component {
               <select
                 type="input"
                 className="form-control"
+                name="animalType"
+                onChange={this.props.handleChange}
                 id="searchTerm"
                 placeholder="Choose search term"
               >
-                <option>Animal Type</option>
-                <option>Dogs</option>
-                <option>Cats</option>
-                <option>Rabbits</option>
-                <option>Small & Furry</option>
-                <option>Scales, Fins, & Other</option>
-                <option>Birds</option>
-                <option>Horses</option>
-                <option>Barnyard</option>
+                <option value="dog">Animal Type</option>
+                <option value="dog">Dogs</option>
+                <option value="cat">Cats</option>
               </select>
               <input
                 type="input"
+                name="zipCode"
+                onChange={this.props.handleChange}
+                value={this.props.zipCode}
                 className="form-control"
                 id="zipSearch"
                 placeholder="Zip Code"
@@ -58,9 +56,18 @@ class Home extends Component {
             </div>
           </form>
         </div>
+        <Search {...this.props}/>
       </div>
     );
   }
 }
 
 export default Home;
+
+
+// <option>Rabbits</option>
+// <option>Small & Furry</option>
+// <option>Scales, Fins, & Other</option>
+// <option>Birds</option>
+// <option>Horses</option>
+// <option>Barnyard</option>

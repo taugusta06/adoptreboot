@@ -24,7 +24,7 @@ const Saved = props => (
         </ul>
       </div>
       <button className='buttons'>View Pet</button>
-      <button onClick={() => props.removePet(props.id)} className="remove">
+      <button onClick={props.removePet} className="remove">
         Remove
       </button>
     </div>

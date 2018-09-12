@@ -19,22 +19,17 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "./build/index.html"));
 });
 
-app.get("/api", function(req, res) {
-  console.log(req.body.searchTerm);
-  //const{ body:{ searchTerm } } = req;
-  const searchTerm = "dog";
-  const zipSearch = "85203";
-  const url = `http://api.petfinder.com/pet.find?format=json&key=f2ed227e8b882e795297e6092f7a50d4&location=${zipSearch}&animal=${searchTerm}`;
+app.get("/api/animals/:zip/:type", function(req, res) {
+  const {type, zip} = req.params;
+  const url = `http://api.petfinder.com/pet.find?format=json&key=f2ed227e8b882e795297e6092f7a50d4&location=${zip}&animal=${type}`;
 
   axios
     .get(url)
     .then(response => {
-      res.json(response.data.petfinder.pets.pet);
-      console.log(response.data.petfinder.pets.pet[0].age.$t);
+      console.log(response.data.petfinder.pets.pet)
+      res.json(response.data.petfinder.pets.pet)
     })
-    .catch(err => {
-      if (err) throw err;
-    });
+    .catch(err => console.log(err));
 });
 // Connect to the Mongo DB
 mongoose.connect(

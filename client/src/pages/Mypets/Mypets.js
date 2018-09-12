@@ -7,6 +7,7 @@ function renderPets(props) {
     return props.savedPets.map(pet => {
       return (
         <Saved
+          removePet={() => props.removePet(pet)}
           key={pet.id}
           {...pet}
         />

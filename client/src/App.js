@@ -1,40 +1,56 @@
 import React from "react";
-import Search from "./pages/Search/Search";
 import Home from "./pages/Home/Home";
 import Mypets from "./pages/Mypets/Mypets";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       searchResults: [],
-      savedPets: []
+      savedPets: [],
+      animalType: "dog",
+      zipCode: "85297"
     };
     this.searchAnimals = this.searchAnimals.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.removePet = this.removePet.bind(this);
     this.savePet = this.savePet.bind(this);
   }
 
-  searchAnimals(e) {
-    e.preventDefault();
-    axios.get("http://localhost:3001/api").then(response => {
-      this.setState({ searchResults: response.data });
-    });
-    // API.getPets().then(({data}) => {
-    //   console.log(data);
-    //   this.setState({ searchResults: data });
-    // })
+  handleChange(e){
+    const {value, name} = e.target;
+    this.setState({[name]: value});
   }
 
-  savePet(petId) {
-    let savedPets = [...this.state.savedPets];
-    if (savedPets.indexOf(petId) === -1) {
-      savedPets.push(petId);
-    }
+  searchAnimals(e) {
+    const {zipCode, animalType} = this.state;
+    e.preventDefault();
+    axios.get(`http://localhost:3001/api/animals/${zipCode}/${animalType}`).then(response => {
+      this.setState({ searchResults: response.data });
+    });
+  }
 
+  savePet(pet) {
+    let savedPets = [...this.state.savedPets];
+    if (savedPets.indexOf(pet) === -1) {
+      savedPets.push(pet);
+    }
+    this.setState({ savedPets });
+  }
+
+  removePet(pet) {
+    let savedPets = [...this.state.savedPets];
+    if (savedPets.indexOf(pet) !== -1) {
+      savedPets.splice(savedPets.indexOf(pet), 1);
+    }
     this.setState({ savedPets });
   }
 
@@ -47,19 +63,21 @@ class App extends React.Component {
             <Route
               exact
               path="/"
-              render={props => <Home searchAnimals={this.searchAnimals} />}
-            />
-            <Route
-              exact
-              path="/search"
               render={props => (
-                <Search savePet={this.savePet} {...this.state} />
+                <Home
+                  {...this.state}
+                  handleChange={this.handleChange}
+                  searchAnimals={this.searchAnimals}
+                  savePet={this.savePet}
+                />
               )}
             />
             <Route
               exact
               path="/savedpets"
-              render={props => <Mypets {...this.state} />}
+              render={props => (
+                <Mypets removePet={this.removePet} {...this.state} />
+              )}
             />
             {/* <Route component={NoMatch} /> */}
           </Switch>
