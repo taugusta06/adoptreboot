@@ -7,8 +7,8 @@ class Footer extends Component {
         return (
             <div className='footer-container'>
             <div className='social-media-links'>
-            <img src={Facebook} className='socialmedia-fb' alt='Facebok'></img>
-            <img src={Twitter} className='socialmedia-tw' alt='Twitter'></img>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src={Facebook} className='socialmedia-fb' alt='Facebok'></img></a>
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><img src={Twitter} className='socialmedia-tw' alt='Twitter'></img></a>
             </div>
             </div>
         );

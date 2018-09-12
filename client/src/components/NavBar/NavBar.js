@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router';
+var dogLeft = require('./pics/dogsticker-white-left.png');
+var dogRight = require('./pics/dogsticker-white-right.png');
 
 class NavBar extends Component {
     constructor(props) {
@@ -42,6 +44,7 @@ class NavBar extends Component {
     render() {
         return (
             <div className='navbar-container'>
+            <img src={dogLeft} className='doggo' alt=''></img>
                 <div className="navbar-links">
                     {this.navBarConfig.map((navBarItem, index)=> {
                         // console.log(navBarItem);
@@ -50,6 +53,7 @@ class NavBar extends Component {
                     );
                     })}
                 </div>
+                <img src={dogRight} className='doggo' alt=''></img>
             </div>
         );
     }
