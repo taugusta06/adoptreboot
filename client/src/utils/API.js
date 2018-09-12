@@ -1,10 +1,21 @@
-// import axios from "axios";
+import axios from "axios";
+import filterParams from "./filterParams";
 
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = true;
-
-// export default {
-//   getPets: function(searchTerm = "dog", zipCode= "85203") {
-//     const url = `http://api.petfinder.com/pet.find?format=json&key=f2ed227e8b882e795297e6092f7a50d4&location=${zipCode}&animal=${searchTerm}`;
-//     return axios.get(url);
-//   }
-// };
+export default {
+  // Gets pets from the PetFinder API
+  getPets: function(params) {
+    return axios.get("/api/pets", { params: filterParams(params) });
+  },
+  // Gets all saved pets
+  getSavedPets: function() {
+    return axios.get("/api/pets");
+  },
+  // Deletes the saved pet with the given id
+  deletePet: function(id) {
+    return axios.delete("/api/pets/" + id);
+  },
+  // Saves an pet to the database
+  savePet: function(petData) {
+    return axios.post("/api/pets", petData);
+  }
+};
