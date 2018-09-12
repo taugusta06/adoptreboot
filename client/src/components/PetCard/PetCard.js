@@ -24,7 +24,7 @@ const PetCard = props => (
           <strong>sex:</strong> {props.sex}
         </li>
       </ul>
-      <button>Save Pet</button>
+      <button onClick={props.savePet}>Save Pet</button>
       <button>View Pet</button>
     </div>
   </div>

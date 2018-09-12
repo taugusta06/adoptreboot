@@ -29,7 +29,7 @@ class NavBar extends Component {
             };
             
         
-        console.error(newState);
+        console.log(newState);
         this.setState(newState);
         //for in loop typically used for objects
         // for (this.props.history.location.pathname in index) {
