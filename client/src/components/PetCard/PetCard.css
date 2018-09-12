@@ -1,15 +1,33 @@
 .card {
     background-color: rgb(41, 217, 240);
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 35px;
     align-items: center;
     border: 5px solid rgb(13, 95, 128);
     width: 25%;
+    text-align: center;
+    margin: 1%;
 }
-/* .img-container {
+.img-container {
 
-} */
+}
+.pict {
+  height: 125px;
+width: 150px;
+border-radius: 20px;
+}
 .content {
-color: white
+
+font-size: 20px;
+}
+.buttons {
+margin: 1%;
+border-radius: 20px;
+height: 40px;
+width: 80px;
+border-color: rgb(0, 0, 255);
+background-color: rgb(0, 0, 255);
+color: white;
+font-size: 15px;
 }
 /* .remove {
     

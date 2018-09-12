@@ -4,7 +4,7 @@ const PetCard = props => (
   <div className={`card${props.shake ? " shake" : ""}`}>
   <p><strong>name:</strong> {props.name}</p>
     <div className="img-container">
-      <img alt="animalPicture" src={props.image} />
+      <img className='pict' alt="animalPicture" src={props.image} />
     </div>
     <div className="content">
       <ul>
@@ -24,8 +24,8 @@ const PetCard = props => (
           <strong>sex:</strong> {props.sex}
         </li>
       </ul>
-      <button onClick={props.savePet}>Save Pet</button>
-      <button>View Pet</button>
+      <button className='buttons' onClick={props.savePet}>Save Pet</button>
+      <button className='buttons'>View Pet</button>
     </div>
   </div>
 );

@@ -1,0 +1,21 @@
+.Mypets {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+  
+  .Mypets .no-data{
+    margin: auto;
+    text-align: center;
+  }
+  
+  .no-data a{
+    color: #000;
+  }
+  
+  #resultHeader {
+    text-align: center;
+  }
+  

@@ -19,7 +19,7 @@ class Home extends Component {
   // }
   render() {
     return (
-      <div>
+      <div className="Home">
         <div className="searchBar">
           <h1 className="h1">Welcome to Adopt-A-Pet</h1>
           <h2 className="h2">Search for a pet!</h2>
