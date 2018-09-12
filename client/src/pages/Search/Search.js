@@ -7,7 +7,7 @@ class Search extends Component {
   render() {
     return (
       <div className="searchResults">
-      <h2 id="resultHeader">Your Pet Options</h2>
+      <h2 id="resultHeader">Your Pet Options from your {this.props.name}</h2>
         <div className="Search">
           <PetCard />
         </div>
